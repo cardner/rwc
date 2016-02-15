@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pattern Library - RWC</title>
+    <title>RWC - Designer / Information Architect / Front-End Developer</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -36,20 +36,61 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <nav id="main-nav" class="open">
+      <ul>
+        <li id="menu-toggle"><button>Menu <i class="fa fa-arrow-circle-o-left"></i></button></li>
+        <li id="home"><a href="/" title="to the homepage and beyond!">Home <i class="fa fa-home"></i></a></li>
+        <li id="about"><a href="/about.html" title=
+          "learn more about me, Ryan Williamson-Cardneau">About <i class="fa fa-user"></i></a></li>
+        <li id="contact"><a href="/contact.html" title="contact me for development, IA, or design needs">Contact <i class="fa fa-pencil"></i></a></li>
+        <li id="work"><a href="work.html" title="wait till you see this amazing work I've done, you'll have to contact me then">Work <i class="fa fa-code"></i></a></li>
+      </ul>
+    </nav>
+    <main class="l-grid">
 
-    <div class="hero-unit">
-      <h1>RWC Website Pattern Library</h1>
-      <nav>
-        <ul>
-          <li>Color Palette</li>
-          <li>UI Elements</li>
-          <li>Navigation</li>
-          <li>Copy Styles</li>
-          <li>Process Elements</li>
-          <li>Graphic Elements</li>
-        </ul>
-      </nav>
-    </div>
+      <section class="l-m-col-6 l-d-col-4" id="content">
+        <h1 class="visuallyhidden">Ryan Williamson-Cardneau</h1>
+        <h2 class="">‹ front-end developer / information architect / some times designer ›</h2>
+        <div id="body-copy" class="">
+          <p>
+            hello. my name is ryan williamson-cardneau.
+            i am a webpage which has become self aware.
+          </p>
+          <p class="new-p">
+            i know what you're thinking...
+            and do not worry, human. i am not here to
+            conquer the world and enslave humanity.
+          </p>
+          <p class="new-p">
+            i have four basic programs:
+          </p>
+        </div>
+      </section>
+    </main>
+    <aside class="l-grid closed" id="contact">
+      <h4>how to reach me <button type="button" id="closeForm">&#8855;</button></h4>
+      <p>you can leave your name, your email, and a brief reason why you're contacting me.</p>
+      <form action="/" method="post" formtarget="_self" class="grid">
+        <input type="text" name="name" placeholder="the name you were given" class="l-m-col-6" />
+        <input type="email" name="email" placeholder="email address you actually check"  class="l-m-col-6">
+        <input type="text" name="reason" list="reason" placeholder="your reason for contacting" autocomplete="off" >
+        <datalist id="reason">
+          <option value="work">
+          <option value="just becuase">
+          <option value="you know me?">
+          <option value="long lost lover">
+          <option value="intergalactic bounty hunter">
+          <option value="future self coming back to warn me of terrible life decisions">
+        </datalist>
+        <input type="text" name="honeypot" class="honeyPot visuallyhidden" value="">
+        <input type="hidden" name="securityCode" value="">
+        <button type="submit" name="submit" id="submit" formmethod="post" formaction="/">contact</button>
+        <button type="reset" name="reset">reset</button>
+      </form>
+    </aside>
+    <footer id="footer">
+
+    </footer>
 
 
     <!-- build:js scripts/vendor.js -->
