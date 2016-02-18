@@ -176,7 +176,7 @@ $items: 6;
 #main-nav {
   background-color: map-get($blue, mid);
   font-family: $tenso;
-  font-size: 1.57rem;
+  font-size: 1.25rem;
   font-weight: bold;
   height: 100%;
   letter-spacing: .07em;
@@ -213,11 +213,13 @@ $items: 6;
         padding: 1.25rem 1rem;
         text-decoration: none;
         text-transform: uppercase;
+        line-height: 1em;
 
         i {
           float: right;
           font-size: 1.875rem;
           text-align: right;
+          margin-top: -.2em;
         }
       }
 
@@ -299,6 +301,10 @@ $items: 6;
 main {
   padding: 1em;
   z-index: 5;
+
+  p {
+    margin-bottom: 1em;
+  }
 }
 //Contact Form
 #contact-form {
