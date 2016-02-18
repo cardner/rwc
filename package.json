@@ -37,6 +37,10 @@
       "quotes": [
         2,
         "single"
+      ],
+      "no-mixed-spaces-and-tabs": [1, "smart-tabs"],
+      "no-shadow": [
+        1
       ]
     }
   }

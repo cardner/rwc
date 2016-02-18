@@ -131,6 +131,10 @@ body {
   width: 1px;
 }
 
+.button {
+  border-radius: 0;
+}
+
 /////////////////////////////Grid Begins
 // breakpoints map
 $breakpoints: (
@@ -172,6 +176,57 @@ $items: 6;
   }
 }
 //////////////////////////////Grid Ends
+
+.l-right {
+  float: right;
+}
+
+.l-left {
+  float: left;
+}
+
+// Text layouts
+.l-text-right {
+  text-align: right;
+}
+
+.l-text-left {
+  text-align: left;
+}
+
+.l-text-center {
+  text-align: center;
+}
+
+//Padding & Margin styles
+$spacing: (
+  marg-b: 2,
+  marg-b: 5,
+  marg-b: 7,
+  marg-b: 9,
+);
+$spacingTypes: (
+  bottom,
+  top,
+  left,
+  right
+);
+
+// loop over the margin size
+@each $key, $value in $spacing {
+  @for $i from 1 through $spaceingTypes {
+    .l-#{$key}-#{$i} {
+
+    }
+  }
+}
+
+///////////////////////////////Components
+.c-tagline {
+  font-size: .7em;
+  margin-bottom: 1.25em;
+}
+
 //Main Menu Styles
 #main-nav {
   background-color: map-get($blue, mid);
@@ -236,6 +291,7 @@ $items: 6;
           cursor: pointer;
           font-family: $tenso;
           font-size: 1em;
+          font-weight: bold;
           padding-right: .28em;
           text-align: left;
           width: 100%;
@@ -270,33 +326,6 @@ $items: 6;
   }
 }
 
-.l-right {
-  float: right;
-}
-
-.l-left {
-  float: left;
-}
-
-// Text layouts
-.l-text-right {
-  text-align: right;
-}
-
-.l-text-left {
-  text-align: left;
-}
-
-.l-text-center {
-  text-align: center;
-}
-
-///////////////////////////////Components
-.c-tagline {
-  font-size: .7em;
-  margin-bottom: 1.25em;
-}
-
 //Main Content Area
 main {
   padding: 1em;
@@ -314,6 +343,7 @@ main {
   top: 0;
   width: 50vw;
   z-index: 10;
+  padding: 0.5em;
 
   &.closed {
     right: -50vw;
