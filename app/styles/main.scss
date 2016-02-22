@@ -1,6 +1,5 @@
 // bower:scss
 @import 'bower_components/font-awesome/scss/font-awesome.scss';
-
 // endbower
 ///////////////////////////// CSS Reset //////////////////////////////////
 // http://meyerweb.com/eric/tools/css/reset/
@@ -200,23 +199,27 @@ $items: 6;
 
 //Padding & Margin styles
 $spacing: (
-  marg-b: 2,
-  marg-b: 5,
-  marg-b: 7,
-  marg-b: 9,
+  margin-bottom,
+  margin-right,
+  margin-left,
+  margin-top,
+  padding-bottom,
+  padding-right,
+  padding-left,
+  padding-top
 );
-$spacingTypes: (
-  bottom,
-  top,
-  left,
-  right
+$sizes: (
+  2,
+  5,
+  7,
+  9
 );
 
 // loop over the margin size
-@each $key, $value in $spacing {
-  @for $i from 1 through $spaceingTypes {
-    .l-#{$key}-#{$i} {
-
+@each $key in $spacing {
+  @each $value in $sizes {
+    .l-#{$key}-#{$value} {
+      #{$key}: unquote('#{$value}' + px);
     }
   }
 }
