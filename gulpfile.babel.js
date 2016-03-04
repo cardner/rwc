@@ -4,6 +4,8 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+import connect from 'gulp-connect-php';
+import httpProxy from 'http-proxy';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -95,19 +97,39 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['lint', 'styles', 'scripts', 'fonts'], () => {
-  browserSync({
+  connect.server({
+        port: 8000,
+        bin: 'C:/MAMP/bin/php/php5.4.40/php',
+        ini: 'C:/MAMP/bin/php/php5.4.40/php.ini-development',
+        base: 'app',
+        open: false
+    });
+  //
+  var proxy = httpProxy.createProxyServer({});
+   browserSync({
     notify: false,
     port: 9000,
+    browser: ['firefox'],
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
         '/bower_components': 'bower_components'
+      },
+      middleware: function (req, res, next) {
+        var url = req.url;
+        if (!url.match(/^\/(styles|fonts|scripts|bower_components)\//)) {
+          proxy.web(req, res, { target: 'http://127.0.0.1:8000' });
+        }
+        else {
+          next();
+        }
       }
     }
   });
 
   gulp.watch([
     'app/*.html',
+    'app/*.php',
     '.tmp/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*'

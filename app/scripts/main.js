@@ -1,5 +1,28 @@
 ///Functions
 
+///Animation functions to be reused
+function fade(el, fadeType) {
+  'use strict';
+  if(fadeType === 'out') {
+    el.style.opacity = 0;
+  }
+  else if (fadeType === 'in') {
+    el.style.opacity = 100;
+  }
+
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
+    last = +new Date();
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+
+  tick();
+}
+
 ///controls the open and close status of the flyouts
   function sidebarToggle(el, event) {
     'use strict';
@@ -47,10 +70,13 @@ function getContent(a, event) {
   var url = a.getAttribute('href');
   var pageTitle = a.getAttribute('title');
   var request = new Request(url, {
-    method: 'GET',
+    method: 'POST',
+    mode: 'cors',
+    redirect: 'follow',
+    body: 'getIncludes=true',
     headers: new Headers({
-      'Content-Type': 'text/plain'
-  	})
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    })
   });
   fetch(request)
     .then(function(responseObj){
@@ -58,7 +84,8 @@ function getContent(a, event) {
       console.log('status: ', responseObj.status);
   if(responseObj.ok) {
       responseObj.text().then(function(text) {
-      	bodyCopy.innerHTML = text;
+        fade(bodyCopy, 'out');
+        bodyCopy.innerHTML = text;
         // console.log(text);
         window.history.pushState('object or string', pageTitle, url);
         document.title = pageTitle + ' - RWC';

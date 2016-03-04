@@ -95,6 +95,14 @@ $blue: (
 $tenso: "tenso", sans-serif;
 $lexia: "lexia", serif;
 
+//Misc
+@mixin transitionAll() {
+  -webkit-transition: all 300ms ease-out 50ms;
+  -moz-transition: all 300ms ease-out 50ms;
+  -o-transition: all 300ms ease-out 50ms;
+  transition: all 300ms ease-out 50ms;
+}
+
 ///////////////////////////// Structure //////////////////////////////
 // General
 html {
@@ -224,6 +232,18 @@ $sizes: (
   }
 }
 
+a {
+  text-decoration: none;
+  color: $black;
+  border-bottom: 2px solid;
+  border-color: map-get($blue, mid);
+  @include transitionAll();
+
+  &:hover {
+    color: map-get($blue, mid);
+  }
+}
+
 ///////////////////////////////Components
 .c-tagline {
   font-size: .7em;
@@ -240,11 +260,15 @@ $sizes: (
   letter-spacing: .07em;
   line-height: 1em;
   overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   width: 300px;
   z-index: 10;
+  &, * {
+    @include transitionAll();
+  }
 
-  ul {
+  ul#site-nav {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -295,7 +319,7 @@ $sizes: (
           font-family: $tenso;
           font-size: 1em;
           font-weight: bold;
-          padding-right: .28em;
+          padding-right: .4em;
           text-align: left;
           width: 100%;
 
@@ -307,6 +331,27 @@ $sizes: (
           i {
             font-size: 2.5rem;
           }
+        }
+      }
+    }
+  }
+
+  ul#social-nav {
+    position: absolute;
+    bottom: 170px;
+    width: 100%;
+    align-self: flex-end;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    justify-content: center;
+
+    li {
+      padding: 1em;
+      a {
+        color: map-get($blue, light);
+        &:hover {
+          color: map-get($green, light);
         }
       }
     }
@@ -326,6 +371,19 @@ $sizes: (
     ~ main {
       margin-left: 90px;
     }
+  }
+}
+
+.logo {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 0 1em;
+
+  source, img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -357,4 +415,32 @@ main {
   }
 }
 
+footer#footer {
+  position: fixed;
+  bottom: 0;
+  right: 1em;
+  width: 100%;
+  z-index: 0;
+  background-color: $white;
+  font-size: 0.8rem;
+
+  p {
+    text-align: right;
+  }
+}
 ///////////////////////////////Media Queries
+@media screen and (min-width: 1280px) {
+  body {
+    font-size: 1.2vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 2.7vw;
+  }
+}
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 5vw;
+  }
+}
