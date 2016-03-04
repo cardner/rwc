@@ -231,6 +231,49 @@ $sizes: (
     }
   }
 }
+////Element styles
+h1 {
+  font-family: $tenso;
+  font-size: 3rem;
+  line-height: 1em;
+  font-weight: 700;
+  color: map-get($green, dark);
+}
+h2 {
+  font-family: $tenso;
+  font-size: 2.5rem;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: map-get($green, dark);
+}
+h3 {
+  font-family: $tenso;
+  font-size: 2rem;
+  line-height: 1.2em;
+  font-weight: 700;
+  color: map-get($green, dark);
+}
+h4 {
+  font-family: $lexia;
+  font-size: 2rem;
+  line-height: 1.2em;
+  font-weight: 700;
+  color: map-get($green, dark);
+}
+h5 {
+  font-family: $lexia;
+  font-size: 2rem;
+  line-height: 1.2em;
+  font-weight: 700;
+  color: map-get($grey, mid);
+}
+h6 {
+  font-family: $lexia;
+  font-size: 2rem;
+  line-height: 1.2em;
+  font-weight: 400;
+  color: map-get($grey, mid);
+}
 
 a {
   text-decoration: none;
@@ -242,6 +285,58 @@ a {
   &:hover {
     color: map-get($blue, mid);
   }
+}
+button {
+  padding: 1em .25em .5em .5em;
+  background: $white;
+  border-bottom: 2px solid map-get($grey, light);
+  border-right: 4px solid map-get($grey, light);
+  border-left: none;
+  border-top: none;
+  font-family: $tenso;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1em;
+  text-align: left;
+  cursor: pointer;
+  @include transitionAll();
+}
+.btn-blue {
+  background-color: map-get($blue, mid);
+  color: $white;
+  border-color: map-get($blue, dark);
+
+  &:hover {
+    background-color: $white;
+    color: map-get($blue, dark);
+    border-color: map-get($grey, light);
+  }
+}
+.btn-red {
+  background-color: map-get($red, mid);
+  color: $white;
+  border-color: map-get($red, dark);
+
+  &:hover {
+    background-color: $white;
+    color: map-get($red, dark);
+    border-color: map-get($grey, light);
+  }
+}
+.btn-green {
+  background-color: map-get($green, mid);
+  color: $white;
+  border-color: map-get($green, dark);
+
+  &:hover {
+    background-color: $white;
+    color: map-get($green, dark);
+    border-color: map-get($grey, light);
+  }
+}
+
+.bkg-lt-grey {
+  background-color: map-get($grey, light);
 }
 
 ///////////////////////////////Components
@@ -255,7 +350,7 @@ a {
   background-color: map-get($blue, mid);
   font-family: $tenso;
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   height: 100%;
   letter-spacing: .07em;
   line-height: 1em;
@@ -278,7 +373,7 @@ a {
       display: block;
       width: 100%;
 
-      &:hover {
+      &:hover, &.active {
         background-color: $white;
         border-right-color: map-get($blue, dark);
 
@@ -318,7 +413,7 @@ a {
           cursor: pointer;
           font-family: $tenso;
           font-size: 1em;
-          font-weight: bold;
+          font-weight: 700;
           padding-right: .4em;
           text-align: left;
           width: 100%;
@@ -347,7 +442,7 @@ a {
     justify-content: center;
 
     li {
-      padding: 1em;
+      padding: .6em;
       a {
         color: map-get($blue, light);
         &:hover {
@@ -398,27 +493,40 @@ main {
 }
 //Contact Form
 #contact-form {
-  background-color: map-get($grey, mid);
-  bottom: 0;
+  // background-color: map-get($blue, light);
+  background-color: $white;
+  border: 4px solid map-get($blue, dark);
   position: fixed;
   top: 0;
+  bottom: 0;
   width: 50vw;
   z-index: 10;
   padding: 0.5em;
 
   &.closed {
-    right: -50vw;
+    left: -50vw;
   }
 
   &.open {
-    right: 0;
+    left: 300px;
+  }
+  #closeForm {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: map-get($red, mid);
+    cursor: pointer;
+
+    &:hover {
+      color: map-get($red, light);
+    }
   }
 }
 
 footer#footer {
   position: fixed;
   bottom: 0;
-  right: 1em;
+  right: 1.8em;
   width: 100%;
   z-index: 0;
   background-color: $white;
@@ -432,6 +540,13 @@ footer#footer {
 @media screen and (min-width: 1280px) {
   body {
     font-size: 1.2vw;
+    max-width: 1280px;
+
+    footer#footer {
+      right:auto;
+      max-width: 1280px;
+      left: 0;
+    }
   }
 }
 @media screen and (max-width: 768px) {

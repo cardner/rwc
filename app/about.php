@@ -6,9 +6,9 @@ else {
   $fetchCall = false;
 }
   if($fetchCall != 'true') {
-    include_once('/includes/head.php');
-    include_once('/includes/nav.php');
-    include_once('/includes/container-start.php');
+    include 'includes/head.php';
+    include 'includes/nav.php';
+    include 'includes/container-start.php';
   }
 ?>
   <h3>About ME!</h3>
@@ -19,8 +19,8 @@ else {
   <p>When I’m not making things on the web, I like to make things at home: cooking, dis/re-assembling my bikes, or honing my amateur luthier skills. Once I’m worn out, you’ll often find me lounging with my two dogs (Princess Zelda and Sir Ralph Ralphington III, Esquire) and watching old horror films or re-watching Stargate for the tenth time.</p>
 <?php
   if($fetchCall != 'true') {
-    include_once('/includes/container-end.php');
-    include_once('/includes/contact.php');
-    include_once('/includes/foot.php');
+    include 'includes/container-end.php';
+    include 'includes/contact.php';
+    include 'includes/foot.php';
   }
 ?>

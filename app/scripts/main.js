@@ -101,6 +101,28 @@ function getContent(a, event) {
 
 }
 
+function makeActive(a) {
+  'use strict';
+  var className = 'active';
+  var activeLink = a.parentNode;
+  var mainMenu = document.getElementById('main-nav');
+  var menuLinks = mainMenu.querySelectorAll('li');
+  Array.prototype.forEach.call(menuLinks, function(menuLink) {
+    if (menuLink.classList) {
+      menuLink.classList.remove(className);
+    }
+    else {
+      menuLink.className = menuLink.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+  });
+  if (activeLink.classList) {
+    activeLink.classList.add(className);
+  }
+  else {
+    activeLink.className += ' ' + className;
+  }
+}
+
 ///Function to run when document is ready
 var fn = function() {
   'use strict';
@@ -122,15 +144,18 @@ var fn = function() {
 
   contactToggle.addEventListener('click', function(event) {
     sidebarToggle(contactForm, event);
+    makeActive(this);
   }, false);
   closeContact.addEventListener('click', function(event) {
     sidebarToggle(contactForm, event);
+    makeActive(this);
   }, false);
   //trigger for links to run fetch request
   Array.prototype.forEach.call(anchors, function(anchor) {
     anchor.addEventListener('click', function(event) {
-      if(this.getAttribute('href').length > 1 && this.getAttribute('href') !== '/contact.html') {
+      if(this.getAttribute('href').length > 1 && this.getAttribute('href') !== '/contact.php' && this.getAttribute('target') !== '_blank') {
         getContent(this, event);
+        makeActive(this);
       }
     }, false);
   });
