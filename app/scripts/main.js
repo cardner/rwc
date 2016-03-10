@@ -144,11 +144,11 @@ var fn = function() {
 
   contactToggle.addEventListener('click', function(event) {
     sidebarToggle(contactForm, event);
-    makeActive(this);
+    makeActive(this.querySelector('a'));
   }, false);
   closeContact.addEventListener('click', function(event) {
     sidebarToggle(contactForm, event);
-    makeActive(this);
+    contactToggle.classList.remove('active');
   }, false);
   //trigger for links to run fetch request
   Array.prototype.forEach.call(anchors, function(anchor) {
