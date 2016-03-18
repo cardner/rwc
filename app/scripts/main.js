@@ -29,8 +29,16 @@ function fade(el, fadeType) {
     event.preventDefault(el);
     console.log('flyout toggle trigger');
     if (el.classList) {
-      el.classList.toggle('open');
-      el.classList.toggle('closed');
+      if(el.classList.length > 0) {
+        el.classList.toggle('open');
+        el.classList.toggle('closed');
+      } else {
+        if(el.classList.contains('open')) {
+          el.classList.toggle('open', 'closed');
+        } else {
+          el.classList.toggle('closed');
+        }
+      }
     } else {
       var classes = el.className.split(' ');
       var existingIndex = classes.indexOf('open');
@@ -162,13 +170,13 @@ var fn = function() {
 };//End of ready function
 
 ///Wait for document to be ready
-function ready(fn) {
+function ready(fa) {
   'use strict';
   if (document.readyState !== 'loading'){
     console.log('document no ready');
     fn();
   } else {
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener('DOMContentLoaded', fa);
     console.log('yep still working');
   }
 }

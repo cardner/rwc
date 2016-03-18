@@ -383,7 +383,7 @@ button {
       }
 
       a, button {
-        border-bottom: 1px solid $white;
+        border-bottom: 1px solid currentColor;
         color: $white;
         display: block;
         outline: none;
@@ -394,7 +394,7 @@ button {
 
         i {
           float: right;
-          font-size: 1.875rem;
+          font-size: 1.775em;
           text-align: right;
           margin-top: -.2em;
         }
@@ -414,7 +414,7 @@ button {
           font-family: $tenso;
           font-size: 1em;
           font-weight: 700;
-          padding-right: .4em;
+          padding-right: .6em;
           text-align: left;
           width: 100%;
 
@@ -471,7 +471,7 @@ button {
 
 .logo {
   position: absolute;
-  bottom: 0px;
+  bottom: 1px;
   width: 100%;
   padding: 0 1em;
 
@@ -537,7 +537,7 @@ footer#footer {
   }
 }
 ///////////////////////////////Media Queries
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1281px) {
   body {
     font-size: 1.2vw;
     max-width: 1280px;
@@ -557,5 +557,13 @@ footer#footer {
 @media screen and (max-width: 360px) {
   body {
     font-size: 5vw;
+  }
+  #main-nav, #main-nav.closed {
+    left: -230px;
+    font-size: 0.8rem;
+
+    ~ main {
+      margin-left: 70px;
+    }
   }
 }

@@ -1,4 +1,4 @@
-    <nav id="main-nav" class="open">
+    <nav id="main-nav" class="">
       <ul id="site-nav">
         <li id="menu-toggle"><button>Menu <i class="fa fa-arrow-circle-o-left"></i></button></li>
         <li id="home"><a href="/" title="to the homepage and beyond!">Home <i class="fa fa-home"></i></a></li>
