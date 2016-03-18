@@ -12,8 +12,7 @@
         <li><a href="https://twitter.com/rcardneau" target="_blank" title="ryan williamson-cardneau's twitter musings"><i class="fa fa-twitter"></i></a></li>
         <li><a href="https://github.com/cardner/rwc" target="_blank" title="the github account for this website and other things I like to share"><i class="fa fa-github"></i></a></li>
       </ul>
-      <picture class="logo">
-        <source  srcset="/images/logo.svg" type="image/svg+xml" />
+      <object type="image/svg+xml" data="/images/logo.svg" class="logo">
         <img alt="Ryan Williamson-Cardneau Logo" src="/images/logo.png" />
-      </picture>
+      </object>
     </nav>

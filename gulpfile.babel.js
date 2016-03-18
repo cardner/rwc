@@ -108,8 +108,8 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['lint', 'styles', 'scripts', 'fonts'], () => {
   connect.server({
         port: 8000,
-        bin: '/Applications/MAMP/bin/php/php5.4.42/bin/php',
-        ini: '/Applications/MAMP/bin/php/php5.4.42/conf/php.ini',
+        bin: 'C:/MAMP/bin/php/php5.4.40/php',
+        ini: 'C:/MAMP/bin/php/php5.4.40/php.ini-development',
         base: 'app',
         open: false
     });

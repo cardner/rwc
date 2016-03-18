@@ -486,6 +486,7 @@ button {
 main {
   padding: 1em;
   z-index: 5;
+  margin-left: 300px;
 
   p {
     margin-bottom: 1em;
@@ -558,7 +559,10 @@ footer#footer {
   body {
     font-size: 5vw;
   }
-  #main-nav, #main-nav.closed {
+  #main-nav {
+    @extend .closed;
+  }
+   #main-nav.closed {
     left: -230px;
     font-size: 0.8rem;
 
