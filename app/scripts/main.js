@@ -1,5 +1,28 @@
 ///Functions
 
+///Check to match media queries with css file
+function mediaqueryresponse(mql){
+  'use strict';
+  var mainMenu = document.getElementById('main-nav');
+  var mainMenuToggle = document.getElementById('menu-toggle');
+   if (mql.matches){ // if media query matches
+    console.log('The condition ' + mql.media + ' has been met');
+    mainMenu.classList.remove('open');
+    mainMenu.classList.toggle('closed', 'open');
+    rotateArrow(mainMenuToggle);
+    // rotateArrow();
+   }
+   else{
+    console.log('full screen mode enabled');
+    mainMenu.classList.remove('closed');
+    mainMenu.classList.toggle('open', 'closed');
+    rotateArrow(mainMenuToggle);
+   }
+}
+///set width to check for
+var mql = window.matchMedia('screen and (max-width: 768px)');
+
+
 ///Animation functions to be reused
 function fade(el, fadeType) {
   'use strict';
@@ -109,6 +132,16 @@ function getContent(a, event) {
 
 }
 
+function scrollToSpot(xs, ys, el) {
+  'use strict';
+  if(el) {
+    var rect = el.getBoundingClientRect();
+    ys = rect.top + document.body.scrollTop;
+    xs = rect.left + document.body.scrollLeft;
+  }
+  window.scroll(xs, ys);
+}
+
 function makeActive(a) {
   'use strict';
   var className = 'active';
@@ -131,6 +164,94 @@ function makeActive(a) {
   }
 }
 
+///Contact form functions
+function contactRyan(event) {
+  'use strict';
+event.preventDefault(this);
+
+  var contactForm = document.getElementById('contact-me');
+  var errors = document.querySelector('.error');
+  if(errors) {
+      errors.remove();
+  }
+  var name = contactForm.querySelector('[name="name"]');
+    var nameVal = name.value;
+  var honeyPot = contactForm.querySelector('.honeyPot').value;
+  var email = contactForm.querySelector('[name="email"]');
+    var emailVal = email.value;
+  var emailTest = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  var reason = contactForm.querySelector('[name="reason"]').value;
+  var securityCode = contactForm.querySelector('[name="securityCode"]').value;
+
+  if (nameVal === '' || nameVal === ' ') {
+      name.focus();
+      name.classList.add('redBorder');
+      return false;
+  }
+  if (emailVal === '' || emailVal === ' ') {
+      email.focus();
+      email.classList.add('redBorder');
+      return false;
+      }
+  else if(emailVal !== '') {
+    if(!emailTest.test(emailVal)) {
+      email.focus();
+      email.classList.add('redBorder');
+      email.insertAdjacentHTML('beforebegin', '<i class="error smaller">Please enter a valid email address.</i>');
+      return false;
+      }
+    }
+  if (!honeyPot === '' || !honeyPot === ' ') {
+    return false;
+  }
+  var redBorder = contactForm.querySelectorAll('input');
+  if(redBorder != null){
+    if(redBorder.length > 1) {
+      for (var c = 0; c < redBorder.length; c++) {
+        redBorder[c].classList.remove('redBorder');
+      }
+    } else {
+      redBorder.classList.remove('redBorder');
+    }
+  }
+  var posturl = 'includes/email.php';
+  var newEmail = new Request( posturl, {
+    method: 'POST',
+    mode: 'cors',
+    redirect: 'follow',
+    body: 'name=' + nameVal + '&email=' + emailVal + '&reason=' + reason + '&securityCode=' + securityCode,
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    })
+  });
+fetch(newEmail)
+.then(function(responseObj){
+    /* handle response */
+    console.log('status: ', responseObj.status);
+    if(responseObj.ok) {
+      responseObj.text().then(function(text) {
+        console.log(text);
+        var contactP = document.getElementById('contact-form').querySelector('.message');
+        fade(contactP, 'out');
+        fade(contactForm, 'out');
+        contactForm.parentNode.removeChild(contactForm);
+        contactP.innerHTML = 'thank you human for contacting me, i will try to generate a non-automated response shortly.';
+        setTimeout( function() {
+          var contactParent = document.getElementById('contact-form');
+          sidebarToggle(contactParent, event);
+          document.getElementById('contact').classList.remove('active');
+        }, 6000);
+      });
+    } else {
+      console.log('Network response was not ok.');
+    }
+  })
+  .catch(function(err) {
+    // Error :(
+    console.log('error: ', err.message);
+  });
+}
+
 ///Function to run when document is ready
 var fn = function() {
   'use strict';
@@ -142,9 +263,13 @@ var fn = function() {
   var contactToggle = document.getElementById('contact');
   var closeContact = document.getElementById('closeForm');
   var anchors = document.querySelectorAll('a');
+  var sendEmail = document.getElementById('submitEmail');
 
 
 ///Triggers
+  mediaqueryresponse(mql); // call listener function explicitly at run time
+  mql.addListener(mediaqueryresponse);
+
   mainMenuToggle.addEventListener('click', function(event) {
     sidebarToggle(mainMenu, event);
     rotateArrow(this);
@@ -161,11 +286,16 @@ var fn = function() {
   //trigger for links to run fetch request
   Array.prototype.forEach.call(anchors, function(anchor) {
     anchor.addEventListener('click', function(event) {
-      if(this.getAttribute('href').length > 1 && this.getAttribute('href') !== '/contact.php' && this.getAttribute('target') !== '_blank') {
+      if(this.getAttribute('href').length > 1 && this.getAttribute('href') !== '/contact.php' && this.getAttribute('target') !== '_blank' && !this.getAttribute('download')) {
         getContent(this, event);
         makeActive(this);
+        scrollToSpot(0, 0);
       }
     }, false);
+  });
+  //Trigger to send email
+  sendEmail.addEventListener('click', function(event) {
+    contactRyan(event);
   });
 };//End of ready function
 
