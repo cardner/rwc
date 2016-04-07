@@ -91,6 +91,10 @@ $blue: (
   dark: #0878c2,
 );
 
+.mid-blue {
+  color: map-get($blue, mid);
+}
+
 // Fonts
 $tenso: "tenso", sans-serif;
 $lexia: "lexia", serif;
@@ -561,6 +565,7 @@ main {
     opacity: 0;
     // top: 20%;
     // bottom: 80%;
+    z-index: -5;
   }
 
   &.open {
@@ -569,6 +574,7 @@ main {
     opacity: 1;
     // top: 0;
     // bottom: 0;
+    z-index: 5;
   }
   #closeForm {
     margin: 0;
@@ -614,34 +620,49 @@ footer#footer {
   body {
     font-size: 2.7vw;
   }
+  #contact-form {
+    &.open {
+      width: 88vw;
+    }
+  }
 }
 @media screen and (max-width: 360px) {
   body {
     font-size: 5vw;
   }
-  @mixin closed {
-    left: -231px;
-
-    ~ main {
-      margin-left: 69px;
+  #main-nav {
+    ul#site-nav {
+      li#menu-toggle {
+        border-right-width: 0.5rem;
+        button {
+          i {
+            font-size: 2rem;
+          }
+        }
+      }
+      li {
+        border-right-width: 0.5rem;
+        a {
+          i {
+            font-size: 1.25em;
+          }
+        }
+      }
     }
+    &.closed {
+      left: -231px;
 
-    ~ #contact-form {
-        left: 69px;
+      ~ main {
+        margin-left: 69px;
+      }
+
+      ~ #contact-form {
+          left: 69px;
+          &.open {
+            width: 81vw;
+          }
+      }
     }
   }
-  // #main-nav {
-  //   @include closed;
-  // }
-  #contact-form.open {
-    width: 81vw;
-  }
-  //  #main-nav.closed {
-  //   left: -230px;
-  //   font-size: 0.8rem;
-  //
-  //   ~ main {
-  //     margin-left: 70px;
-  //   }
-  // }
+
 }
