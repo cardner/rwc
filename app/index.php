@@ -3,9 +3,9 @@
   include 'includes/nav.php';
   include 'includes/container-start.php';
 ?>
-  <h2>Thank you for visiting, </h2><p class="mid-blue">as fair warning this site is a work in progress. If you have any opinions on what you see please feel free to contact me using the available from the left hand menu.</p>
+  <h1>welcome</h1>
     <p>
-      hello. my name is ryan williamson-cardneau.
+      my name is ryan williamson-cardneau.
       i am a webpage which has become self aware.
     </p>
     <p class="new-p">
@@ -13,6 +13,7 @@
       and do not worry, human. i am not here to
       conquer the world and enslave humanity.
     </p>
+    <sup class="mid-blue">*as fair warning this site is a work in progress. If you have any opinions on what you see please feel free to contact me using the available form from the left hand menu.</sup>
 <?php
   include 'includes/container-end.php';
   include 'includes/contact.php';

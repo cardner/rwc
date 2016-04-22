@@ -1,6 +1,6 @@
     <nav id="main-nav" class="">
       <ul id="site-nav">
-        <li id="menu-toggle"><button>Menu <i class="fa fa-arrow-circle-o-left"></i></button></li>
+        <li id="menu-toggle"><button>Menu <i class="fa fa-arrow-circle-o-left fa-rotate-180"></i></button></li>
         <li id="home"><a href="/" title="to the homepage and beyond!">Home <i class="fa fa-home"></i></a></li>
         <li id="about"><a href="/about.php" title=
           "learn more about me, Ryan Williamson-Cardneau">About <i class="fa fa-user"></i></a></li>

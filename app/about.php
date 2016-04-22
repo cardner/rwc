@@ -11,7 +11,7 @@ else {
     include 'includes/container-start.php';
   }
 ?>
-  <h3>About ME!</h3>
+  <h1>about ME!</h1>
   <p>As a child, I wanted to be a jet plane (not a pilot), or maybe a robotic dinosaur. These days, I’m happy to be a web maker, although I haven’t given up the dream of someday being a robot. I love spending my days transforming the web into a friendlier and less frustrating place through user-focused design. To me, this means basing design decisions on research and data to provide users with what they need, when they need it. Sarah Parmenter, Luke Wroblewski, and Jeffrey Zeldman are some of my UX design idols.</p>
 
   <p>Recently, I’ve been working with a professor from my alma mater to better integrate web development practices and processes into the design curriculum. I think it’s critical that new design graduates are familiar with web technologies.</p>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Ryan Cardneau is a front-end developer, information architect, and some times designer who lives and works out of Ann Arbor, MI. He is also an obsessed bike gear head and father of two demonic and lovable dogs">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UX Designer / Information Architect / Front-End Developer - R.W.C</title>
+    <title>ux designer / information architect / front&ndash;end developer - R.W.C</title>
 
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#3e98d3">
